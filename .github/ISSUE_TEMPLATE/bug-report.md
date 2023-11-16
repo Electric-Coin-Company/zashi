@@ -12,14 +12,14 @@ This issue tracker is only for issues related to the Zashi Wallet's user interfa
 
 For platform-specific issues, please instead use one of the following channels:
 
-If you'd like to report a bug you encountered in the Zashi IOS Wallet, please
+If you'd like to report a bug you encountered in the Zashi iOS Wallet, please
 file a GitHub issue at https://github.com/Electric-Coin-Company/zashi-ios/issues/new?labels=bug&template=bug-report.md
 
 If you'd like to report a bug you encountered in the Zashi Android Wallet, please
 file a Github issue at https://github.com/Electric-Coin-Company/zashi-android/issues/new?labels=bug&template=bug-report.md
 
 General Zcash questions and/or support requests and are best directed to either:
- * Zcash Forum: https://forum.zcashcommunity.com/)
+ * Zcash Forum: https://forum.zcashcommunity.com/
  * Discord Community: https://discord.io/zcash-community
 
 If you wish to report a security issue, please follow our

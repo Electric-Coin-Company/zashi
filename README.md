@@ -13,7 +13,7 @@ please [sign up here](https://docs.google.com/forms/d/e/1FAIpQLSeQpykeMF8QcxnX5W
 If you'd like to report feature request for the Zashi Wallet, please file a
 GitHub issue [here](https://github.com/Electric-Coin-Company/zashi/issues/new/choose).
 
-If you'd like to report a bug you encountered in the Zashi IOS Wallet, please
+If you'd like to report a bug you encountered in the Zashi iOS Wallet, please
 file a GitHub issue [here](https://github.com/Electric-Coin-Company/zashi-ios/issues/new?labels=bug&template=bug-report.md).
 
 If you'd like to report a bug you encountered in the Zashi Android Wallet, please

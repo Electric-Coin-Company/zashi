@@ -87,8 +87,6 @@ sections below. The adversary...
 - can't learn information about the user's shielded balance over time (aside
   from the assumption that it must be nonzero after they've received
   transactions).
-- can't make the user think person X has sent them funds when it was actually
-  someone different.
 - can't find out one of the user's wallet addresses unless the user has given
   it out or the adversary has a guess for what it is.
   - **Note that this adversary *can* check whether an address they have belongs
@@ -98,8 +96,8 @@ sections below. The adversary...
 - can't cause a transaction the user is receiving to fail on the Zcash network.
 - can't make the user send the wrong amount of funds.
 - can't make the user send a transaction with a memo field they did not intend.
-- can't make it look like a payment the user received came from someone who it
-  actually did not.
+- can't make it look like a payment the user received came from a transaction
+  other than the one it actually came from.
 - can't make it look (to someone else) like the user is sending funds to
   somewhere they are not.
 - can't make it look (to someone else) like the user is receiving money from
@@ -118,13 +116,17 @@ adversary, because this one is capable of all the same things and more), the
 adversary can...
 
 - **make the user think they have (or will have) spendable funds when they don't.**
-  - They can repeat a transaction to the user's wallet many times to cause the wallet to think it has more balance than it can actually spend.
+  - They can repeat a transaction to the user's wallet many times to cause the
+    wallet to think it has more balance than it can actually spend.
 - **make the user think their balance is lower than it actually is.**
-  - They can omit transactions destined to user, so that the user's wallet can have spendable funds that it isn't aware of.
+  - They can omit transactions destined to user, so that the user's wallet can
+    have spendable funds that it isn't aware of.
 - **make the user think a transaction they sent or received succeeded when it actually failed.**
-  - If the transaction gets reorged-away or never mined, the adversary could make it look like it was actually mined.
+  - If the transaction gets reorged-away or never mined, the adversary could make
+    it look like it was actually mined.
 - **make the user think a transaction they sent or received failed when it actually succeeded.**
-  - They could omit the transaction, making it look like it failed when in fact it was mined on the Zcash network.
+  - They could omit the transaction, making it look like it failed when in fact it
+    was mined on the Zcash network.
 
 We plan to eventually fix these issues by implementing the block header and
 note commitment tree validation specified in [ZIP 307](https://github.com/zcash/zips/issues/341).
@@ -153,15 +155,18 @@ attacked by this kind of adversary as well as any of the weaker ones in the
 sections below. The adversary...
 
 - can't make the user think their balance is lower than it actually is.
-- can't make the user think they have (or will have) spendable funds when they don't.
-- can't make the user think a transaction they sent or received succeeded when it actually failed.
-- can't make the user think a transaction they sent or received failed when it actually succeeded.
+- can't make the user think they have (or will have) spendable funds when
+  they don't.
+- can't make the user think a transaction they sent or received succeeded
+  when it actually failed.
+- can't make the user think a transaction they sent or received failed when
+  it actually succeeded.
 
 There are no known weaknesses that apply to this adversary specifically. All
 of the known weaknesses in the sections below for weaker adversaries apply to
 this adversary as well.
 
-## Network- and Lightwalletd-Surveiling Adjacent-App Adversary
+## Network- and Lightwalletd-Surveilling Adjacent-App Adversary
 
 **Description:** The adversary can only (a) intercept all network traffic
 between the app and the internet, (b) can run code as an app on the user's
@@ -216,14 +221,17 @@ The adversary can...
   (e.g. recurring payments) using fully-shielded transactions.**
   - They would observe bandwidth spikes that look like sends/receives following
     the same pattern.
-- make the user think outdated information (transactions, balance, etc.) is up to date.
+- make the user think outdated information (transactions, balance, etc.) is
+  up-to-date.
   - By blocking the connection to lightwalletd.
 - tell which of many users of the lightwalletd instance the user is.
   - If the user reconnects from the same IP address, they can usually assume it
     is the same user.
-- silently prevent the user from receiving wallet security updates or security notices
+- silently prevent the user from receiving wallet security updates or security
+  notices.
   - By blocking the phone's connection to the internet or app store.
-- tell which cryptocurrencies the user is using if the SDK is used in a multi-currency wallet.
+- tell which cryptocurrencies the user is using if the SDK is used in a
+  multi-currency wallet.
   - The adversary would be able to see that the wallet is connecting to a
     lightwalletd instance, which reveals they are using the Zcash component
     of the wallet.
@@ -253,28 +261,36 @@ to be satisfied against this adversary are that the adversary...
 
 - can't tell *that* or *when* the user has received a fully-shielded transaction.
 - can't tell *that* or *when* the user sends a fully-shielded transaction.
-- can't learn who the user is sending/receiving funds to/from in fully-shielded transactions.
+- can't learn who the user is sending/receiving funds to/from in fully-shielded
+  transactions.
 - can't tell how many transactions the user has sent or received over time.
 - can't determine whether or not the user's wallet owns a particular address.
 - can't tell who the user is (i.e. their real name).
 - can't tell where the user is.
-- can't tell that the user spends money according to a certain pattern (e.g. recurring payments) using fully-shielded transactions.
-- can't make the user think outdated information (transactions, balance, etc.) is up to date.
+- can't tell that the user spends money according to a certain pattern (e.g.
+  recurring payments) using fully-shielded transactions.
+- can't make the user think outdated information (transactions, balance, etc.)
+  is up-to-date.
 - can't tell which of the many users of the lightwalletd instance the user is.
-- can't silently prevent the user from receiving wallet security updates or security notices.
-- can't tell which cryptocurrencies the user is using if the SDK is in use in a multi-currency wallet.
+- can't silently prevent the user from receiving wallet security updates or
+  security notices.
+- can't tell which cryptocurrencies the user is using if the SDK is in use in
+  a multi-currency wallet.
 - can't tell when the user is actively using the wallet.
 - can't tell when the user's wallet was created.
 - can't cause a transaction the user sends to fail.
 
-There are several known weaknesses that this adversary can exploit. The adversary can...
+There are several known weaknesses that this adversary can exploit.
+The adversary can...
 
 - **tell when the user spends shielded funds sent to them by the adversary.**
   - dust attack: the adversary can send many low-value notes, which will be
     spent in a transaction with many Sapling inputs (visible on the
     blockchain).
-- tell when the user sends or receives a t-address transaction, and tell what their transparent balance is.
-  - t-address are not private, users should use fully shielded transactions to obtain privacy.
+- tell when the user sends or receives a t-address transaction, and tell what
+  their transparent balance is.
+  - t-address are not private, users should use fully shielded transactions to
+    obtain privacy.
 - tell that the user is using this particular wallet app.
   - differences in note selection might distinguish it from other wallets.
 
@@ -290,4 +306,4 @@ This threat model is missing important details, for example, about:
 - More fine-grained models of adversaries, e.g. one that has eclipsed the
   lightwalletd node but has not been able to compromise it fully.
 
-These shortcomings will be addressed in future updates to the threat model.
+These shortcomings may be addressed in future updates to the threat model.
